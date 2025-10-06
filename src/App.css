@@ -40,3 +40,11 @@
 .read-the-docs {
   color: #888;
 }
+
+.differenceBlock {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+  font-size: bold;
+  color: green;
+}

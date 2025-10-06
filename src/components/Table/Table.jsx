@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { tarifData, secretData, vislugaData, livingWageData, militaryRanksData, positionsData, premiyaData } from "../../data";
 import { TableItem } from "../TableItem/TableItem";
 
-export const Table = () => {
+export const Table = ({ onChange }) => {
   const [result, setResult] = useState(0);
   const [year, setYear] = useState(livingWageData[0].name);
   const [oklad, setOklad] = useState(tarifData[0].name);
@@ -45,6 +45,7 @@ export const Table = () => {
     const total = (zvannyaNum + okladNum + totalVisluga + (secretNum/100 * okladNum) + ((okladNum + zvannyaNum + totalVisluga) * prohodNum/100) + (okladNum * premiyaNum)) * 0.985;
 
     setResult(isNaN(total) ? "0.00" : total.toFixed(2));
+    onChange(isNaN(total) ? 0 : parseFloat(total.toFixed(2)));
   };
 
   useEffect(() => {
